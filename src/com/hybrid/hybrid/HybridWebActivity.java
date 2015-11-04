@@ -31,7 +31,7 @@ public class HybridWebActivity extends Activity {
 		myweb.addJavascriptInterface(new MyJavascriptInterface(), "android");
 		myweb.setWebViewClient(new MyWebViewClient());
 		myweb.setWebChromeClient(new WebChromeClient());
-		myweb.loadUrl("http://192.168.10.15:8080/Web/index.jsp");
+		myweb.loadUrl("http://192.168.10.15/Web/index.jsp");
 	}
 	
 	class MyJavascriptInterface {
