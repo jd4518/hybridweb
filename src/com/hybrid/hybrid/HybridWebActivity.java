@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class HybridWebActivity extends Activity {
+public class HybridWebActivity extends Activity implements OnClickListener {
 
 	WebView myweb;
+	Button btnWeb80;
+	Button btnWeb8080;
 	
 	@SuppressLint("JavascriptInterface")
 	@Override
@@ -23,6 +28,12 @@ public class HybridWebActivity extends Activity {
 		setContentView(R.layout.activity_hybrid_web);
 		
 		myweb = (WebView) findViewById(R.id.myweb);
+		btnWeb80 = (Button) findViewById(R.id.btnWeb80);
+		btnWeb8080 = (Button) findViewById(R.id.btnWeb8080);
+		
+		btnWeb80.setOnClickListener(this);
+		btnWeb8080.setOnClickListener(this);
+		
 		
 		WebSettings settings = myweb.getSettings();
 		settings.setJavaScriptEnabled(true);
@@ -66,5 +77,22 @@ public class HybridWebActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()){
+		case R.id.btnWeb80:
+			myweb.loadUrl("http://192.168.10.15");
+			break;
+		case R.id.btnWeb8080:
+			myweb.loadUrl("http://192.168.10.15:8080/Web/");
+			break;
+		default:
+				break;
+		
+		}
+		
 	}
 }
